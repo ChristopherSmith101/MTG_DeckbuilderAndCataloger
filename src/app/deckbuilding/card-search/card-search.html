@@ -20,7 +20,7 @@
     }
     @else if (selectedCard.card_faces && selectedCard.card_faces.length >= 2) {
       <div>
-        <img
+        <img style="margin-right: 10px;"
           [src]="selectedCard.card_faces[0].image_uris?.normal"
           [alt]="selectedCard.card_faces[0].name"
           width="250"
