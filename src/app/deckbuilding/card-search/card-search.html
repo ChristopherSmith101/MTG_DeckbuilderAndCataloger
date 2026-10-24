@@ -1,0 +1,36 @@
+<form (submit)="searchCard(cardName.value, $event)">
+	<label for="card-name">Card Name:</label>
+	<input #cardName type="text" id="card-name" name="card-name" placeholder="Enter a card name" />
+	<button type="submit">Search</button>
+</form>
+
+<br/>
+
+@if (card(); as selectedCard) {
+  @if (selectedCard.object === 'error') {
+    <p>Error: {{ selectedCard.details }}</p>
+  }
+  @else {
+    @if (selectedCard.image_uris) {
+      <img
+        [src]="selectedCard.image_uris.normal"
+        [alt]="selectedCard.name"
+        width="250"
+      />
+    }
+    @else if (selectedCard.card_faces && selectedCard.card_faces.length >= 2) {
+      <div>
+        <img style="margin-right: 10px;"
+          [src]="selectedCard.card_faces[0].image_uris?.normal"
+          [alt]="selectedCard.card_faces[0].name"
+          width="250"
+        />
+        <img
+          [src]="selectedCard.card_faces[1].image_uris?.normal"
+          [alt]="selectedCard.card_faces[1].name"
+          width="250"
+        />
+      </div>
+    }
+  }
+}
