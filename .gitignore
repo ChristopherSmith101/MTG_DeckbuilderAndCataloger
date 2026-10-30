@@ -45,3 +45,6 @@ Thumbs.db
 
 # Backend Node Modules
 /backend/node_modules
+.env
+.env.*
+!.env.example
