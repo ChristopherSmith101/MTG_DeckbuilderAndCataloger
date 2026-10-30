@@ -1,11 +1,16 @@
+require('node:process').loadEnvFile();
+
 const express = require('express');
+
+// Import routes
+const healthRouter = require('./routes/health');
+
 const app = express();
-const port = 3000;
 
-app.get('/api/health', (req, res) => {
-    res.json({ status: 'ok' });
-});
+const PORT = 3000;
 
-app.listen(port, () => {
-    console.log(`Server running on port ${port}`);
+app.use('/api/health', healthRouter);
+
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
 });
